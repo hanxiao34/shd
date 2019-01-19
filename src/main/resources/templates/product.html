@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="default">
+    <head>
+        <title>机票列表</title>
+        <link rel="stylesheet" href="/css/style.css" type="text/css" />
+        <script src="/webjars/jquery/1.11.1/jquery.min.js"></script>
+        <script src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="/js/common.js"></script>
+    </head>
+    <body>
+        <div layout:fragment="content" class="row">
+            <div class="col-xs-8 col-md-8">
+                <h3>
+                    <a href="/" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span>活动首页</a>
+                    <a href="/jp" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span>机票首页</a>
+                    <a href="/jp/create" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> 我要登记</a>
+                    <a href="/jp/match" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> 查询匹配</a>
+                    <a href="#" id="my" onclick="my();" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span>我的机票</a>
+                </h3>
+                <h2>机票列表</h2>
+                正在匹配：<span th:text="${str}"></span>
+                机票总数：<span th:text="${count}"></span>
+
+                <div class="table-responsive">
+                    <table class="table" id="product-table" width="100%">
+                        <thead>
+                            <tr>
+                                <th>出发</th>
+                                <th>到达</th>
+                                <th>日期</th>
+                                <th>想要出发</th>
+                                <th>想要到达</th>
+                                <th>聊天宝</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="product : ${jps}">
+                                <td th:text="${product.havefrom}"></td>
+                                <td th:text="${product.haveto}"></td>
+                                <td th:text="${product.date}"></td>
+                                <td th:text="${product.wantfrom}"></td>
+                                <td th:text="${product.wantto}"></td>
+                                <td th:text="${product.ltb}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div id="footer"> </div>
+    </body>
+<script>
+    function my() {
+        document.cookie="ltb="+localStorage.getItem("ltb");
+        window.location.href="/jp/my";
+    }
+
+</script>
+</html>

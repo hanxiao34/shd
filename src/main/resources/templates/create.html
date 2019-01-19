@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="default">
+    <head>
+        <title>登记机票</title>
+        <link rel="stylesheet" href="/css/style.css" type="text/css" />
+        <script src="/webjars/jquery/1.11.1/jquery.min.js"></script>
+        <script src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="/js/common.js"></script>
+    </head>
+    <body>
+        <div layout:fragment="content" class="row">
+            <div class="col-xs-8 col-md-8">
+                <h3>
+                    <a href="/" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span>活动首页</a>
+                    <a href="/jp" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span>机票首页</a>
+                    <a href="/jp/create" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> 我要登记</a>
+                    <a href="/jp/match" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> 查询匹配</a>
+                </h3>
+                <h2>登记机票</h2>
+                <span style="font-size: 9px">
+                已有机票信息请填写完整，想要的不要求完整
+                聊天宝账号必填，不然没法联系</span>
+                <form action="/jp/save" method="post" onsubmit="return validate_form(this)">
+                    <div class="form-group">
+                        <label for="email">我的机票:</label>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">出发地</label>
+                        <input type="text" class="form-control" name="havefrom"  />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">到达地</label>
+                        <input type="text" class="form-control" name="haveto" />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">日期</label>
+                        <input type="text" class="form-control" name="date" />
+                    </div>
+                    <div class="form-group" style="height: 20px">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="email">我想要:</label>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">出发地</label>
+                        <input type="text" class="form-control" name="wantfrom" />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">到达地</label>
+                        <input type="text" class="form-control" name="wantto" />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">聊天宝</label>
+                        <input type="text" id="ltb" class="form-control" name="ltb" />
+                    </div>
+                    <button type="submit" class="btn btn-success">保存</button>
+                </form>
+            </div>
+        </div>
+        <div id="footer"> </div>
+    </body>
+    <script type="text/javascript">
+
+        function validate_required(field,alerttxt)
+        {
+            with (field)
+            {
+                if (value==null||value=="")
+                {alert(alerttxt);return false}
+                else {return true}
+            }
+        }
+
+        function validate_form(thisform)
+        {
+            with (thisform)
+            {
+                if (validate_required(havefrom,"出发地不能为空!")==false)
+                {havefrom.focus();return false}
+                if (validate_required(haveto,"到达地不能为空!")==false)
+                {haveto.focus();return false}
+                if (validate_required(date,"出发日期不能为空!")==false)
+                {date.focus();return false}
+                if (validate_required(ltb,"聊天宝账号不能为空!")==false)
+                {ltb.focus();return false}
+                localStorage.setItem("ltb", $("#ltb").val());
+            }
+        }
+        var l=localStorage.getItem("ltb");
+        if (l){
+            $("#ltb").val(l)
+        }
+    </script>
+
+</html>

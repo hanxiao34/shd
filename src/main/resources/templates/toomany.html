@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="default">
+    <head>
+        <title>错误</title>
+        <link rel="stylesheet" href="/css/style.css" type="text/css" />
+        <script src="/webjars/jquery/1.11.1/jquery.min.js"></script>
+        <script src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="/js/common.js"></script>
+    </head>
+    <body>
+        <div layout:fragment="content" class="row">
+            <div class="col-xs-8 col-md-8">
+                <h3>
+                    <a href="/" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span>活动首页</a>
+                    <a href="/jp" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span>机票首页</a>
+                    <a href="/jp/create" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> 我要登记</a>
+                    <a href="/jp/match" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> 查询匹配</a>
+                </h3>
+
+                为了避免过多无效信息，一个聊天宝账号最多发布3条机票信息。
+
+            </div>
+        </div>
+    </body>
+
+    <script src="/webjars/jquery/1.11.1/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</html>

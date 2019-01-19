@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="default">
+    <head>
+        <title>登记机票</title>
+        <link rel="stylesheet" href="/css/style.css" type="text/css" />
+        <script src="/webjars/jquery/1.11.1/jquery.min.js"></script>
+        <script src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="/js/common.js"></script>
+    </head>
+    <body>
+        <div layout:fragment="content" class="row">
+            <div class="col-xs-8 col-md-8">
+                <h3>
+                    <a href="/" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span>活动首页</a>
+                    <a href="/jp" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span>机票首页</a>
+                    <a href="/jp/create" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> 我要登记</a>
+                    <a href="/jp/match" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> 查询匹配</a>
+                </h3>
+                <h2>匹配机票</h2>
+                自己的机票信息必须填写完整，想要的可以只填写出发地，更容易匹配到
+                <form action="/jp/matchs" method="post">
+                    <div class="form-group">
+                        <label for="email">我想要:</label>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">出发地*</label>
+                        <input type="text" class="form-control" name="wantfrom" />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">到达地</label>
+                        <input type="text" class="form-control" name="wantto" />
+                    </div>
+                    <div class="form-group" style="height: 20px">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">我的机票:</label>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">出发地*</label>
+                        <input type="text" class="form-control" name="havefrom" />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">到达地*</label>
+                        <input type="text" class="form-control" name="haveto" />
+                    </div>
+
+
+                    <button type="submit" class="btn btn-success">匹配</button>
+                </form>
+            </div>
+        </div>
+        <div id="footer"> </div>
+    </body>
+    <script src="/webjars/jquery/1.11.1/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</html>
