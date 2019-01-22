@@ -7,6 +7,7 @@ package com.hx.repositories;
 
 import com.hx.models.Jp;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -42,7 +43,7 @@ public class JpMatchRepository{
 
         Query query=new Query(Criteria.byExample(jp));
 
-       return mongoOperations.find(query,Jp.class);
+       return mongoOperations.find(query.with(new Sort(Sort.Direction.DESC,"id")),Jp.class);
     }
     public List<Jp> matchLtb(String ltb){
         Jp jp=new Jp();
@@ -50,12 +51,12 @@ public class JpMatchRepository{
         jp.setLtb(ltb);
 
         Query query=new Query(Criteria.byExample(jp)).limit(5);
-        return mongoOperations.find(query,Jp.class);
+        return mongoOperations.find(query.with(new Sort(Sort.Direction.DESC,"id")),Jp.class);
     }
     public List<Jp> findall(){
 
         Query query=new Query().limit(50);
 
-        return mongoOperations.find(query,Jp.class);
+        return mongoOperations.find(query.with(new Sort(Sort.Direction.DESC,"id")),Jp.class);
     }
 }
