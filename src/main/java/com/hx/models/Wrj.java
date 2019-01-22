@@ -93,7 +93,7 @@ public class Wrj {
     private void processText(String text) {
         if (text.contains("#宋焕铎大行动#")){
             if (text.contains("#tello无人机#")){
-                Matcher matcher = pattern.matcher(source);
+                Matcher matcher = pattern.matcher(text);
                 if (matcher.find()){
                     this.have=(matcher.group(1).replaceAll("[^\\u4e00-\\u9fa5]",""));;
                     this.want=(matcher.group(2).replaceAll("[^\\u4e00-\\u9fa5]",""));;
@@ -204,7 +204,7 @@ public class Wrj {
     }
 
     public static void main(String[] args) {
-        String source="#宋焕铎大行动# #tello无人机#成都 换上 海@萌萌的罗宾叔";
+        String source="#宋焕铎大行动# #tello无人机#青海换四川@萌萌的罗宾叔";
 
         Matcher matcher = pattern.matcher(source);
             if (matcher.find()){

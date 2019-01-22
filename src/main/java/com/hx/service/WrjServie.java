@@ -24,7 +24,7 @@ import java.util.concurrent.*;
  */
 @Component
 public class WrjServie {
-    private static final Logger LOG = LoggerFactory.getLogger(JpRestController.class);
+    private static final Logger LOG = LoggerFactory.getLogger(WrjServie.class);
     @Autowired
     WrjRepository wrjRepository;
 

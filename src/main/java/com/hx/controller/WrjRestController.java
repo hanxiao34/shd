@@ -44,5 +44,11 @@ public class WrjRestController {
         r.setData(m);
         return r;
     }
-
+    @RequestMapping("/d/wrj/share")
+    public Result share() {
+        Result r =new Result();
+        Map m =new HashMap();
+        r.setData(m);
+        return r;
+    }
 }

@@ -25,7 +25,7 @@ import java.util.concurrent.TimeUnit;
  */
 @Component
 public class WrjMatchServie {
-    private static final Logger LOG = LoggerFactory.getLogger(JpRestController.class);
+    private static final Logger LOG = LoggerFactory.getLogger(WrjMatchServie.class);
     @Autowired
     WrjRepository wrjRepository;
 
