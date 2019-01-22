@@ -40,5 +40,43 @@ public class WrjMatchRepository {
         }
         return 0l;
     }
+    public List<Wrj> findall(){
+
+        Query query=new Query().limit(50);
+
+        return mongoOperations.find(query.with(new Sort(Sort.Direction.DESC,"id")),Wrj.class);
+    }
+    public  Wrj  findOneForMatch(){
+        Wrj w=new Wrj();
+        w.setStatus("0");
+        Query query=new Query(Criteria.byExample(w)).limit(1);
+        List<Wrj> wrjs = mongoOperations.find(query.with(new Sort(Sort.Direction.DESC, "id")), Wrj.class);
+        if (wrjs!=null&&wrjs.size()>0){
+            return wrjs.get(0);
+        }
+        return null;
+    }
+    public  Wrj  finDMatchFriden(String have,String want){
+        Wrj w=new Wrj();
+        w.setStatus("0");
+        w.setWant(have);
+        w.setHave(want);
+        Query query=new Query(Criteria.byExample(w)).limit(1);
+        List<Wrj> wrjs = mongoOperations.find(query.with(new Sort(Sort.Direction.ASC, "id")), Wrj.class);
+        if (wrjs!=null&&wrjs.size()>0){
+            Wrj m= wrjs.get(0);
+            m.setResp("恭喜，你们俩完全匹配("+have+"<->"+want+")，快去找小伙伴玩耍吧");
+           return  m;
+        }
+        return null;
+    }
+    public  List<Wrj>  findForNotify(){
+        Wrj w=new Wrj();
+        w.setStatus("3");
+
+        Query query=new Query(Criteria.byExample(w)).limit(10);
+        return   mongoOperations.find(query.with(new Sort(Sort.Direction.ASC, "id")), Wrj.class);
+
+    }
 
 }
